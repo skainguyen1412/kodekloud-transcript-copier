@@ -57,6 +57,20 @@ Click extension icon
 
 The extension does not collect or send any data anywhere other than Vimeo's own caption host.
 
+## Safety and privacy
+
+This extension is small and has no dependencies, so you can check it yourself in a few minutes:
+
+- **No tracking, no analytics, no accounts.** Nothing is sent to me or to any third party.
+- **One network request only.** `fetch` is called once in `popup.js`, and only for URLs that start with `https://captions.vimeo.com/`. Run `grep -n "fetch" popup.js` to confirm.
+- **No transcript data stored.** The only thing saved is your light/dark theme choice, in the popup's `localStorage`.
+- **No remote code.** There is no `eval`, no `innerHTML`, and no scripts loaded from the internet. All code is in this repository.
+- **Minimal permissions.** `activeTab` and `scripting` plus two Vimeo hosts (see the table above). The extension cannot read other sites or your browsing history.
+- **Runs only when you click.** There is no background script and no content script. The only code injected into a page is a one-off read of the Vimeo player config when you open the popup.
+- **No build step.** The zip on the Releases page is made from the files in this repository by a [GitHub Actions workflow](.github/workflows/release.yml), so what you install matches the source.
+
+Quick check: `grep -nE "eval|innerHTML|chrome.storage" popup.js vtt.js` should print nothing.
+
 ## Project layout
 
 ```
