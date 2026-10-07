@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,7 @@
 
     <main>
       <p id="message" class="message" hidden></p>
-      <button id="retry" type="button" hidden>Thử lại</button>
+      <button id="retry" type="button" hidden>Retry</button>
 
       <section id="content" hidden>
         <h1 id="title"></h1>
@@ -22,13 +22,13 @@
         </label>
 
         <label class="row">
-          <span>Ngôn ngữ</span>
+          <span>Language</span>
           <select id="langSelect"></select>
         </label>
 
         <label class="check">
           <input type="checkbox" id="timestamps" />
-          <span>Hiện timestamp</span>
+          <span>Show timestamps</span>
         </label>
 
         <textarea id="preview" readonly spellcheck="false"></textarea>
@@ -36,7 +36,7 @@
 
         <div class="actions">
           <button id="copy" type="button" disabled>📋 Copy</button>
-          <button id="download" type="button" disabled>⬇ Tải .txt</button>
+          <button id="download" type="button" disabled>⬇ Download .txt</button>
         </div>
       </section>
     </main>

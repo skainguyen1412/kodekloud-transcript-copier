@@ -27,10 +27,10 @@ function readPlayerConfig() {
 const CAPTIONS_ORIGIN = 'https://captions.vimeo.com/';
 
 const MESSAGES = {
-  noVideo: 'Không tìm thấy video Vimeo trên trang này.',
-  noTracks: 'Video này không có phụ đề.',
-  expired: 'Link hết hạn, hãy reload trang.',
-  fetchFailed: 'Không tải được phụ đề.',
+  noVideo: 'No Vimeo video found on this page.',
+  noTracks: 'This video has no captions.',
+  expired: 'Caption link expired. Reload the page and try again.',
+  fetchFailed: 'Could not load the captions.',
 };
 
 const $ = (id) => document.getElementById(id);
@@ -94,7 +94,7 @@ async function findVideos() {
       func: readPlayerConfig,
     });
   } catch (err) {
-    lastDiagnostics = `executeScript lỗi: ${err.message}`;
+    lastDiagnostics = `executeScript failed: ${err.message}`;
     return []; // restricted page (chrome://, web store, ...) or no access
   }
   lastDiagnostics = results.map((r) => JSON.stringify(r.result && r.result.debug)).join('\n');
@@ -137,7 +137,7 @@ async function loadTrack(track) {
   const token = ++loadToken;
   state.track = track;
   state.text = '';
-  els.preview.value = 'Đang tải phụ đề…';
+  els.preview.value = 'Loading captions…';
   els.stats.textContent = '';
   setBusy(true);
 
@@ -164,7 +164,7 @@ function render() {
   els.preview.value = state.text;
   const words = state.text.split(/\s+/).filter(Boolean).length;
   const lines = state.text ? state.text.split('\n').length : 0;
-  els.stats.textContent = `${words.toLocaleString('vi-VN')} từ · ${lines.toLocaleString('vi-VN')} dòng`;
+  els.stats.textContent = `${words.toLocaleString('en-US')} words · ${lines.toLocaleString('en-US')} lines`;
   setBusy(false);
 }
 
@@ -199,7 +199,7 @@ function onDownload() {
 }
 
 async function init() {
-  showMessage('Đang tải…');
+  showMessage('Loading…');
   const videos = await findVideos();
   if (videos.length === 0) {
     showMessage(`${MESSAGES.noVideo}\n\n${lastDiagnostics}`);
