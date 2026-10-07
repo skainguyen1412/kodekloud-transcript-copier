@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vimeo Transcript Copier</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>Vimeo Transcript Copier</header>
+
+    <main>
+      <p id="message" class="message" hidden></p>
+      <button id="retry" type="button" hidden>Thử lại</button>
+
+      <section id="content" hidden>
+        <h1 id="title"></h1>
+
+        <label id="videoRow" class="row" hidden>
+          <span>Video</span>
+          <select id="videoSelect"></select>
+        </label>
+
+        <label class="row">
+          <span>Ngôn ngữ</span>
+          <select id="langSelect"></select>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="timestamps" />
+          <span>Hiện timestamp</span>
+        </label>
+
+        <textarea id="preview" readonly spellcheck="false"></textarea>
+        <p id="stats" class="stats"></p>
+
+        <div class="actions">
+          <button id="copy" type="button" disabled>📋 Copy</button>
+          <button id="download" type="button" disabled>⬇ Tải .txt</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="vtt.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
