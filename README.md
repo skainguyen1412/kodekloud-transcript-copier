@@ -20,9 +20,9 @@ Many course platforms embed Vimeo videos with captions but give you no way to re
 
 The extension is not on the Chrome Web Store, so load it as an unpacked extension:
 
-1. Clone or download this repository.
+1. Download the latest `kodekloud-transcript-copier-*.zip` from the [Releases](../../releases) page and unzip it (or clone this repository).
 2. Open `chrome://extensions` and turn on **Developer mode**.
-3. Click **Load unpacked** and select this folder.
+3. Click **Load unpacked** and select the unzipped folder.
 4. Open a page with a Vimeo video, then click the extension icon.
 
 Requires Chrome 111 or newer, or another Chromium-based browser such as Edge or Brave.
