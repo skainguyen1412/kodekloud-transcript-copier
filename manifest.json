@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Vimeo Transcript Copier",
+  "name": "KodeKloud Transcript Copier",
   "version": "0.1.0",
   "description": "Copy/download transcripts from Vimeo players (e.g. KodeKloud).",
   "action": {

@@ -9,8 +9,10 @@
   --field: #f6f8fa;
 }
 
+/* Dark colors apply when the system is dark (unless light is forced) or when dark is forced. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
     --bg: #1e1f22;
     --fg: #e6e8ea;
     --muted: #9aa0a6;
@@ -19,6 +21,21 @@
     --accent-fg: #1e1f22;
     --field: #2a2b2e;
   }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1e1f22;
+  --fg: #e6e8ea;
+  --muted: #9aa0a6;
+  --border: #3c4043;
+  --accent: #8ab4f8;
+  --accent-fg: #1e1f22;
+  --field: #2a2b2e;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
 }
 
 * {
@@ -36,9 +53,39 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px 14px;
   font-weight: 600;
   border-bottom: 1px solid var(--border);
+}
+
+.theme-toggle {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--field);
+}
+
+.theme-toggle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+.theme-toggle button[aria-pressed='true'] {
+  color: var(--accent-fg);
+  background: var(--accent);
 }
 
 main {

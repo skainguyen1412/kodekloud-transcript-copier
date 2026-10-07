@@ -57,6 +57,39 @@ const state = {
   text: '',
 };
 
+const THEME_KEY = 'theme';
+
+function savedTheme() {
+  try {
+    const value = localStorage.getItem(THEME_KEY);
+    return value === 'light' || value === 'dark' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+// Without a saved choice the CSS follows the system theme; the buttons just reflect it.
+function currentTheme() {
+  return savedTheme() || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function applyTheme(theme) {
+  if (theme) document.documentElement.dataset.theme = theme;
+  const active = currentTheme();
+  $('themeLight').setAttribute('aria-pressed', String(active === 'light'));
+  $('themeDark').setAttribute('aria-pressed', String(active === 'dark'));
+}
+
+function setTheme(theme) {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Storage unavailable: the choice just applies to this popup session.
+  }
+  document.documentElement.dataset.theme = theme;
+  applyTheme();
+}
+
 let lastDiagnostics = ''; // raw per-frame result, shown when no video is found
 let loadToken = 0; // ignores stale responses when the user switches quickly
 let copyResetTimer = null;
@@ -213,6 +246,10 @@ async function init() {
   }
   await selectVideo(0);
 }
+
+$('themeLight').addEventListener('click', () => setTheme('light'));
+$('themeDark').addEventListener('click', () => setTheme('dark'));
+applyTheme(savedTheme());
 
 els.langSelect.addEventListener('change', () => loadTrack(state.video.tracks[Number(els.langSelect.value)]));
 els.videoSelect.addEventListener('change', () => selectVideo(Number(els.videoSelect.value)));

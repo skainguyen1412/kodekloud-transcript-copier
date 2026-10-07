@@ -1,4 +1,4 @@
-# Vimeo Transcript Copier
+# KodeKloud Transcript Copier
 
 A small Chrome extension (Manifest V3) that copies or downloads the transcript of a Vimeo video embedded on a web page, such as a lesson on [KodeKloud](https://learn.kodekloud.com). Click the extension icon and a popup shows the transcript.
 

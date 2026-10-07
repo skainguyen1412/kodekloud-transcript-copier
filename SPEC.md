@@ -1,4 +1,4 @@
-# Spec: Vimeo Transcript Copier (Chrome Extension cho KodeKloud)
+# Spec: KodeKloud Transcript Copier (Chrome Extension cho KodeKloud)
 
 ## 1. Bối cảnh
 - KodeKloud (`learn.kodekloud.com`) nhúng video bằng iframe `https://player.vimeo.com/video/<id>?...&texttrack=en-US`.
@@ -96,7 +96,7 @@ vimeo-transcript-copier/
 ```json
 {
   "manifest_version": 3,
-  "name": "Vimeo Transcript Copier",
+  "name": "KodeKloud Transcript Copier",
   "version": "0.1.0",
   "description": "Copy/download transcripts from Vimeo players (e.g. KodeKloud).",
   "action": {
@@ -137,7 +137,7 @@ Rộng khoảng 400px, cao khoảng 500px, một cột.
 
 ```
 ┌──────────────────────────────────────────┐
-│ Vimeo Transcript Copier                  │
+│ KodeKloud Transcript Copier                  │
 ├──────────────────────────────────────────┤
 │ Working with Hardware                    │  tiêu đề video
 │ Video:    [ Video 1 ▾ ]                  │  chỉ hiện khi có >1 video
